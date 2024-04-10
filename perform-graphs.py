@@ -13,25 +13,25 @@ def rename_columns(data):
     # Rename columns containing "After" to "Vowel_After"
     data.rename(columns=lambda x: x.replace('After', 'Proceeding_Vowel'), inplace=True)
 
-def plot_comparison_graph(data_before, data_after, column_name):
+def plot_comparison_graph(data_before, data_after, column_names):
     plt.figure(figsize=(10, 6))
 
-    # Group data by sound category and calculate the mean for each category
-    grouped_before = data_before.groupby('Sound')[column_name].mean()
-    grouped_after = data_after.groupby('Sound')[column_name].mean()
+    for column_name in column_names:
+        # Group data by sound category and calculate the mean for each category
+        grouped_before = data_before.groupby('Sound')[column_name].mean()
+        grouped_after = data_after.groupby('Sound')[column_name].mean()
 
-    # Plot data before and after priming with different labels
-    plt.plot(grouped_before, label=f'{column_name} Before', color='blue', marker='o')
-    plt.plot(grouped_after, label=f'{column_name} After', color='red', marker='o')
+        # Plot data before and after priming with different labels
+        plt.plot(grouped_before, label=f'{column_name} Before', linestyle='-', marker='o')
+        plt.plot(grouped_after, label=f'{column_name} After', linestyle='--', marker='o')
 
     plt.xlabel('Sound')
     plt.ylabel('Average Frequency (Hz)')
-    plt.title(f'Average {column_name} Before and After Priming')
+    plt.title('Average Frequency Before and After Priming')
     plt.xticks(rotation=45)
     plt.legend()
     plt.grid(True)
     plt.show()
-
 
 # Example usage
 file_path = 'consolidated_data.xlsx'
@@ -53,6 +53,8 @@ rename_columns(data_after)
 print(data_before.columns)
 print(data_after.columns)
 
-# Plot comparison graphs for each column
-for column_name in ['F3_Hz_Preceding_Vowel', 'F3_Hz_Proceeding_Vowel', 'F4_Hz_Preceding_Vowel', 'F4_Hz_Proceeding_Vowel']:
-    plot_comparison_graph(data_before, data_after, column_name)
+# Plot comparison graphs for each set of columns
+plot_comparison_graph(data_before, data_after, ['F3_Hz_Preceding_Vowel', 'F3_Hz_Proceeding_Vowel'])
+plot_comparison_graph(data_before, data_after, ['F4_Hz_Preceding_Vowel', 'F4_Hz_Proceeding_Vowel'])
+plot_comparison_graph(data_before, data_after, ['F3_Hz_Preceding_Vowel', 'F4_Hz_Preceding_Vowel'])
+plot_comparison_graph(data_before, data_after, ['F3_Hz_Proceeding_Vowel', 'F4_Hz_Proceeding_Vowel'])
