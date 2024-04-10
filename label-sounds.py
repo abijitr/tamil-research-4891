@@ -2,11 +2,11 @@ import pandas as pd
 
 # Define the mapping of terms to sounds
 term_to_sound = {
-    'Butter': 'Non retroflex',
-    'Valet': 'Non retroflex',
-    'Puny': 'Non retroflex',
-    'Tiny': 'Non retroflex',
-    'Gala': 'Non retroflex',
+    'Butter': 'non-t',
+    'Valet': 'non-l',
+    'Puny': 'non-n',
+    'Tiny': 'non-n',
+    'Gala': 'non-t',
     'Kannaa': 'n',
     'Pattam : Kite': 't',
     'Vellai': 'l',
@@ -59,3 +59,12 @@ output_excel_file = "modified_combined_data.xlsx"
 with pd.ExcelWriter(output_excel_file) as writer:
     for sheet_name, sheet_data in all_sheets.items():
         sheet_data.to_excel(writer, sheet_name=sheet_name, index=False)
+
+import subprocess
+
+# Specify the path to the Python file you want to run
+python_file_path = 'formant-consolidate.py'
+
+# Run the Python file
+print('running: ', python_file_path)
+subprocess.run(['python', python_file_path])

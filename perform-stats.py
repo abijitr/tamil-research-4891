@@ -1,59 +1,51 @@
 import pandas as pd
-from scipy.stats import f_oneway
-import openpyxl
-import re
+import numpy as np
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
 
-# Define the ANOVA function
-def perform_anova(data1, data2, column_name, output_file):
-    # Convert column data to numeric format
-    data1_column = pd.to_numeric(data1[column_name], errors='coerce').dropna()
-    data2_column = pd.to_numeric(data2[column_name], errors='coerce').dropna()
-    
-    with open(output_file, 'a') as f:
-        f.write(f"Column: {column_name}\n")
-        f_statistic, p_value = f_oneway(data1_column, data2_column)
-        f_statistic_str = str(f_statistic)
-        f.write(f"F-statistic: {f_statistic_str}\n")
-        f.write(f"P-value: {p_value}\n")
-        f.write("Useful result?: ")
-        if p_value < 0.05:
-            f.write("Yes\n")
-            f.write("Reject null hypothesis: There is a significant difference between groups.\n")
-        else:
-            f.write("No\n")
-            f.write("Fail to reject null hypothesis: There is no significant difference between groups.\n")
-        f.write("\n")
+def clean_numeric_columns(data):
+    # Iterate through each column
+    for col in data.columns:
+        # Convert column to numeric, coerce non-numeric values to NaN
+        data[col] = pd.to_numeric(data[col], errors='coerce')
 
-# Load the Excel workbook
-workbook = openpyxl.load_workbook('modified_combined_data.xlsx')
+    # Fill NaN values with 0
+    data.fillna(0, inplace=True)
 
-# Read the Excel file and identify pairs of sheets
-sheet_names = workbook.sheetnames
-pairs = []
-pattern = re.compile(r'Data - (.+)_1')
+def perform_statistical_analysis(file_path):
+    # Load data from the Excel file
+    data_before = pd.read_excel(file_path, sheet_name='Before_Priming')
+    data_after = pd.read_excel(file_path, sheet_name='After_Priming')
 
-for sheet_name in sheet_names:
-    match = pattern.match(sheet_name)
-    if match:
-        participant_name = match.group(1)
-        sheet1 = pd.read_excel('modified_combined_data.xlsx', sheet_name=sheet_name)
-        sheet2 = pd.read_excel('modified_combined_data.xlsx', sheet_name=f'Data - {participant_name}_2')
-        pairs.append((participant_name, sheet1, sheet2))
+    # Clean non-numeric values in all columns
+    clean_numeric_columns(data_before)
+    clean_numeric_columns(data_after)
 
-# Loop through each pair of sheets
-for name, sheet1, sheet2 in pairs:
-    # Combine data from before and after priming into a single DataFrame
-    combined_data = pd.concat([sheet1, sheet2], ignore_index=True)
-    
-    # Output file for ANOVA
-    anova_output_file = f'anova-output/anova_results_conditions_{name}.txt'
-    open(anova_output_file, 'w').close()  # Clear contents of the output file
+    # Fit statistical models for F3_Hz
+    model1_f3 = smf.ols('F3_Hz_After ~ F3_Hz_Before + Time_s_Before + Time_s_After', data=data_before)
+    results1_f3 = model1_f3.fit()
 
-    # Specify columns for ANOVA
-    columns_for_anova = ['F3_Hz_Before', 'F3_Hz_After', 'F4_Hz_Before', 'F4_Hz_After']
+    model2_f3 = smf.ols('F3_Hz_After ~ F3_Hz_Before + Time_s_Before + Time_s_After', data=data_after)
+    results2_f3 = model2_f3.fit()
 
-    # Perform ANOVA for each specified column
-    for column_name in columns_for_anova:
-        perform_anova(sheet1, sheet2, column_name, anova_output_file)
+    # Fit statistical models for F4_Hz
+    model1_f4 = smf.ols('F4_Hz_After ~ F4_Hz_Before + Time_s_Before + Time_s_After', data=data_before)
+    results1_f4 = model1_f4.fit()
 
-    print(f"ANOVA results for pair '{name}' have been saved to '{anova_output_file}'.")
+    model2_f4 = smf.ols('F4_Hz_After ~ F4_Hz_Before + Time_s_Before + Time_s_After', data=data_after)
+    results2_f4 = model2_f4.fit()
+
+    return (results1_f3, results2_f3, results1_f4, results2_f4)
+
+
+# Example usage
+file_path = 'consolidated_data.xlsx'
+results_before_f3, results_after_f3, results_before_f4, results_after_f4 = perform_statistical_analysis(file_path)
+print("Results for f3 data before priming:")
+print(results_before_f3.summary())
+print("\nResults for f3 data after priming:")
+print(results_after_f3.summary())
+print("Results for f4 data before priming:")
+print(results_before_f4.summary())
+print("\nResults for f4 data after priming:")
+print(results_after_f4.summary())
