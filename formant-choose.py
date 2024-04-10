@@ -77,7 +77,6 @@ for worksheet in workbook:
                     contains_word = True
                     break  # Exit the loop once a word is found
         if contains_word:
-            new_worksheet.append([row[0].value])
             before_arr = []
             counter = 1
             ind_row = worksheet[row_number + counter]
@@ -106,6 +105,9 @@ for worksheet in workbook:
                 first = [cell.value for cell in first]
                 second = [cell.value for cell in second]
                 third = [cell.value for cell in third]
+                first[0] = row[0].value
+                second[0] = row[0].value
+                third[0] = row[0].value
                 # print(f"First row: {first}")
                 # print(f"Second row: {second}")
                 # print(f"Third row: {third}")
@@ -114,3 +116,12 @@ for worksheet in workbook:
                 new_worksheet.append(third)
 
 new_workbook.save('summarized-formant-data.xlsx')
+
+import subprocess
+
+# Specify the path to the Python file you want to run
+python_file_path = 'formant-combine.py'
+
+# Run the Python file
+print('running: ', python_file_path)
+subprocess.run(['python', python_file_path])

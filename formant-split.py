@@ -43,4 +43,5 @@ import subprocess
 python_file_path = 'formant-choose.py'
 
 # Run the Python file
+print('running: ', python_file_path)
 subprocess.run(['python', python_file_path])
