@@ -60,7 +60,7 @@ new_workbook = openpyxl.Workbook()
 for worksheet in workbook:
     print(f"Processing worksheet: {worksheet.title}")
     new_worksheet = new_workbook.create_sheet(title=worksheet.title)
-    new_worksheet.append([None, "Time_s_Before", "F1_Hz_Before", "F2_Hz_Before", "F3_Hz_Before", "F4_Hz_Before", None, None, None, None, None, None, None, None, "Time_s_After", "F1_Hz_After", "F2_Hz_After", "F3_Hz_After", "F4_Hz_After"])
+    new_worksheet.append(["Term", "Time_s_Before", "F1_Hz_Before", "F2_Hz_Before", "F3_Hz_Before", "F4_Hz_Before", None, None, None, None, None, None, None, None, "Time_s_After", "F1_Hz_After", "F2_Hz_After", "F3_Hz_After", "F4_Hz_After"])
     # Specify the range of rows to iterate over
     start_row = 1
     end_row = worksheet.max_row  # Adjust as needed
