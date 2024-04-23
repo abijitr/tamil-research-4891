@@ -1,24 +1,24 @@
 Column: F3_Hz_Before
-F-statistic: 3.3918123454565112
-P-value: 0.06673456146371094
-Useful result?: No
-Fail to reject null hypothesis: There is no significant difference between groups.
+F-statistic: 5.436721657013648
+P-value: 0.01985991765853451
+Useful result?: Yes
+Reject null hypothesis: There is a significant difference between groups.
 
 Column: F3_Hz_After
-F-statistic: 0.6662757380632661
-P-value: 0.415149239965117
+F-statistic: 3.4555989534872498
+P-value: 0.06324925545170627
 Useful result?: No
 Fail to reject null hypothesis: There is no significant difference between groups.
 
 Column: F4_Hz_Before
-F-statistic: 5.4476639213990195e-05
-P-value: 0.9941170845651464
+F-statistic: 2.8194753516734523
+P-value: 0.09335207117691748
 Useful result?: No
 Fail to reject null hypothesis: There is no significant difference between groups.
 
 Column: F4_Hz_After
-F-statistic: 4.474875960038288
-P-value: 0.035410440854415005
-Useful result?: Yes
-Reject null hypothesis: There is a significant difference between groups.
+F-statistic: 2.5978292895413744
+P-value: 0.10723737364934668
+Useful result?: No
+Fail to reject null hypothesis: There is no significant difference between groups.
 

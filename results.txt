@@ -1,0 +1,122 @@
+Results for f3 data before priming:
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            F3_Hz_After   R-squared:                       0.099
+Model:                            OLS   Adj. R-squared:                  0.095
+Method:                 Least Squares   F-statistic:                     24.78
+Date:                Wed, 10 Apr 2024   Prob (F-statistic):           3.17e-15
+Time:                        19:47:59   Log-Likelihood:                -4698.5
+No. Observations:                 684   AIC:                             9405.
+Df Residuals:                     680   BIC:                             9423.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+Intercept      1754.5406    108.223     16.212      0.000    1542.048    1967.033
+F3_Hz_Before      0.3432      0.041      8.312      0.000       0.262       0.424
+Time_s_Before    94.4130    106.784      0.884      0.377    -115.254     304.080
+Time_s_After    -95.1792    106.754     -0.892      0.373    -304.786     114.427
+==============================================================================
+Omnibus:                       75.102   Durbin-Watson:                   1.208
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              296.385
+Skew:                           0.431   Prob(JB):                     4.37e-65
+Kurtosis:                       6.107   Cond. No.                     4.36e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 4.36e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+Results for f3 data after priming:
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            F3_Hz_After   R-squared:                       0.246
+Model:                            OLS   Adj. R-squared:                  0.242
+Method:                 Least Squares   F-statistic:                     76.43
+Date:                Wed, 10 Apr 2024   Prob (F-statistic):           8.41e-43
+Time:                        19:47:59   Log-Likelihood:                -4730.3
+No. Observations:                 708   AIC:                             9469.
+Df Residuals:                     704   BIC:                             9487.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+Intercept      1862.6415     84.594     22.019      0.000    1696.555    2028.728
+F3_Hz_Before      0.2348      0.033      7.130      0.000       0.170       0.299
+Time_s_Before  -269.4894     22.220    -12.128      0.000    -313.115    -225.864
+Time_s_After    271.4075     22.196     12.228      0.000     227.829     314.986
+==============================================================================
+Omnibus:                       45.500   Durbin-Watson:                   1.079
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               77.645
+Skew:                           0.457   Prob(JB):                     1.38e-17
+Kurtosis:                       4.341   Cond. No.                     2.98e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.98e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+Results for f4 data before priming:
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            F4_Hz_After   R-squared:                       0.106
+Model:                            OLS   Adj. R-squared:                  0.102
+Method:                 Least Squares   F-statistic:                     26.83
+Date:                Wed, 10 Apr 2024   Prob (F-statistic):           2.07e-16
+Time:                        19:47:59   Log-Likelihood:                -4764.8
+No. Observations:                 684   AIC:                             9538.
+Df Residuals:                     680   BIC:                             9556.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+Intercept      2639.8821    108.421     24.348      0.000    2427.002    2852.762
+F4_Hz_Before      0.2544      0.030      8.621      0.000       0.196       0.312
+Time_s_Before  -252.5579    117.636     -2.147      0.032    -483.531     -21.585
+Time_s_After    252.2409    117.603      2.145      0.032      21.333     483.149
+==============================================================================
+Omnibus:                       42.164   Durbin-Watson:                   1.302
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               75.234
+Skew:                           0.424   Prob(JB):                     4.60e-17
+Kurtosis:                       4.385   Cond. No.                     6.07e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 6.07e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+Results for f4 data after priming:
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            F4_Hz_After   R-squared:                       0.271
+Model:                            OLS   Adj. R-squared:                  0.268
+Method:                 Least Squares   F-statistic:                     87.22
+Date:                Wed, 10 Apr 2024   Prob (F-statistic):           5.38e-48
+Time:                        19:47:59   Log-Likelihood:                -4921.2
+No. Observations:                 708   AIC:                             9850.
+Df Residuals:                     704   BIC:                             9869.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+Intercept      2688.6729     94.859     28.344      0.000    2502.432    2874.914
+F4_Hz_Before      0.2207      0.026      8.372      0.000       0.169       0.272
+Time_s_Before  -405.9430     29.099    -13.950      0.000    -463.074    -348.812
+Time_s_After    406.3663     29.067     13.980      0.000     349.298     463.435
+==============================================================================
+Omnibus:                       47.102   Durbin-Watson:                   1.294
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               81.291
+Skew:                           0.467   Prob(JB):                     2.23e-18
+Kurtosis:                       4.373   Cond. No.                     3.54e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.54e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

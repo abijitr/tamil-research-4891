@@ -36,8 +36,8 @@ for sheet_name in sheet_names:
     match = pattern.match(sheet_name)
     if match:
         participant_name = match.group(1)
-        sheet1 = pd.read_excel('modified_combined_data.xlsx', sheet_name=sheet_name)
-        sheet2 = pd.read_excel('modified_combined_data.xlsx', sheet_name=f'Data - {participant_name}_2')
+        sheet1 = pd.read_excel('consolidated_data.xlsx', 0)
+        sheet2 = pd.read_excel('consolidated_data.xlsx', 1)
         pairs.append((participant_name, sheet1, sheet2))
 
 # Loop through each pair of sheets
